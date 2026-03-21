@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 import { BarChart } from "@/components/charts/bar-chart";
 import { LineChart } from "@/components/charts/line-chart";
@@ -24,10 +24,10 @@ export default function OverviewPage() {
         description="Track live restaurant performance, branch health, recent activity, and quick control actions from a single command surface."
         action={
           <div className="flex gap-2">
-            <Link href="/orders" className="rounded-2xl bg-ink px-4 py-3 text-sm font-medium text-white">
+            <Link to="/orders" className="rounded-2xl bg-ink px-4 py-3 text-sm font-medium text-white">
               Review live orders
             </Link>
-            <Link href="/menu/items/new" className="rounded-2xl bg-white px-4 py-3 text-sm font-medium text-ink shadow-panel">
+            <Link to="/menu/items/new" className="rounded-2xl bg-white px-4 py-3 text-sm font-medium text-ink shadow-panel">
               Add menu item
             </Link>
           </div>

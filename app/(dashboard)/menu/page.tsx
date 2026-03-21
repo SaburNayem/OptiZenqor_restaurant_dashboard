@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { DataTable } from "@/components/ui/data-table";
@@ -23,7 +23,7 @@ export default function MenuPage() {
         title="Categories, items, pricing, and branch availability"
         description="Manage menu configuration with reusable item structures, branch-level availability, variants, add-ons, and merchandising tags."
         action={
-          <Link href="/menu/items/new" className="rounded-2xl bg-ink px-4 py-3 text-sm font-medium text-white">
+          <Link to="/menu/items/new" className="rounded-2xl bg-ink px-4 py-3 text-sm font-medium text-white">
             Add Item
           </Link>
         }
@@ -58,7 +58,7 @@ export default function MenuPage() {
               header: "Item",
               render: (item) => (
                 <div>
-                  <Link href={`/menu/items/${item.id}`} className="font-semibold text-ink hover:text-ember">
+                  <Link to={`/menu/items/${item.id}`} className="font-semibold text-ink hover:text-ember">
                     {item.name}
                   </Link>
                   <p className="mt-1 text-xs text-stone-500">{item.description}</p>

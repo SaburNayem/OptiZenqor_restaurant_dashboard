@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import { SideDrawer } from "@/components/ui/side-drawer";
@@ -44,7 +44,7 @@ export default function BranchesPage() {
             header: "Branch",
             render: (branch) => (
               <div>
-                <Link href={`/branches/${branch.id}`} className="font-semibold text-ink hover:text-ember">
+                <Link to={`/branches/${branch.id}`} className="font-semibold text-ink hover:text-ember">
                   {branch.name}
                 </Link>
                 <p className="mt-1 text-xs text-stone-500">{branch.address}</p>

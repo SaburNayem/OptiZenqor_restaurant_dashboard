@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, useLocation } from "react-router-dom";
 
 import { useDashboardState } from "@/hooks/use-dashboard-state";
 import { cn } from "@/lib/utils";
@@ -24,7 +23,7 @@ const navItems: Array<{ href: string; label: string; roles: UserRole[] }> = [
 ];
 
 export function Sidebar() {
-  const pathname = usePathname();
+  const { pathname } = useLocation();
   const { role } = useDashboardState();
 
   return (
@@ -44,7 +43,7 @@ export function Sidebar() {
             return (
               <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 className={cn(
                   "block rounded-2xl px-4 py-3 text-sm transition",
                   active ? "bg-sand text-ink shadow-panel" : "text-stone-200 hover:bg-white/10"

@@ -1,6 +1,6 @@
 # OptiZenqor Restaurant Dashboard
 
-Production-style admin dashboard scaffold for a single restaurant brand with multiple branches.
+Production-style React admin dashboard scaffold for a single restaurant brand with multiple branches.
 
 ## Folder Structure
 
@@ -80,15 +80,18 @@ Production-style admin dashboard scaffold for a single restaurant brand with mul
 │   └── dashboard-service.ts
 ├── types
 │   └── dashboard.ts
-├── next.config.ts
+├── src
+│   ├── App.tsx
+│   └── main.tsx
 ├── package.json
 ├── postcss.config.js
 ├── tailwind.config.ts
-└── tsconfig.json
+├── tsconfig.json
+└── vite.config.ts
 ```
 
 ## Setup
 
 1. Install dependencies with `npm install`
 2. Start the app with `npm run dev`
-3. Open `http://localhost:3000/login`
+3. Open `http://localhost:5173/login`

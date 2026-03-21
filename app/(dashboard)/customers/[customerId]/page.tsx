@@ -1,19 +1,22 @@
-import { notFound } from "next/navigation";
+import { useParams } from "react-router-dom";
 
+import { ErrorState } from "@/components/ui/error-state";
 import { Panel } from "@/components/ui/panel";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { currency } from "@/lib/utils";
 import { getCustomerById } from "@/services/dashboard-service";
 
-export default async function CustomerDetailsPage({
-  params
-}: {
-  params: Promise<{ customerId: string }>;
-}) {
-  const { customerId } = await params;
+export default function CustomerDetailsPage() {
+  const { customerId } = useParams<{ customerId: string }>();
+  if (!customerId) {
+    return <ErrorState title="Missing customer id" description="No customer was selected for this route." />;
+  }
+
   const customer = getCustomerById(customerId);
-  if (!customer) notFound();
+  if (!customer) {
+    return <ErrorState title="Customer not found" description="The requested customer does not exist in the mock dataset." />;
+  }
 
   return (
     <div className="space-y-6">

@@ -1,19 +1,22 @@
-import { notFound } from "next/navigation";
+import { useParams } from "react-router-dom";
 
+import { ErrorState } from "@/components/ui/error-state";
 import { Panel } from "@/components/ui/panel";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { currency } from "@/lib/utils";
 import { getBranchById, getMenuData, getOrders } from "@/services/dashboard-service";
 
-export default async function BranchDetailsPage({
-  params
-}: {
-  params: Promise<{ branchId: string }>;
-}) {
-  const { branchId } = await params;
+export default function BranchDetailsPage() {
+  const { branchId } = useParams<{ branchId: string }>();
+  if (!branchId) {
+    return <ErrorState title="Missing branch id" description="No branch was selected for this route." />;
+  }
+
   const branch = getBranchById(branchId);
-  if (!branch) notFound();
+  if (!branch) {
+    return <ErrorState title="Branch not found" description="The requested branch does not exist in the mock dataset." />;
+  }
 
   const menu = getMenuData(branch.id);
   const branchOrders = getOrders(branch.id);

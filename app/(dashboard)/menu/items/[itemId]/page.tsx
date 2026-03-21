@@ -1,13 +1,16 @@
+import { useParams } from "react-router-dom";
+
+import { ErrorState } from "@/components/ui/error-state";
 import { Panel } from "@/components/ui/panel";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { getMenuItemById } from "@/services/dashboard-service";
 
-export default async function MenuItemEditorPage({
-  params
-}: {
-  params: Promise<{ itemId: string }>;
-}) {
-  const { itemId } = await params;
+export default function MenuItemEditorPage() {
+  const { itemId } = useParams<{ itemId: string }>();
+  if (!itemId) {
+    return <ErrorState title="Missing menu item id" description="No menu item was selected for this route." />;
+  }
+
   const item = itemId === "new" ? undefined : getMenuItemById(itemId);
 
   return (

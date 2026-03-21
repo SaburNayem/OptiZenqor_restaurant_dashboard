@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 import { DataTable } from "@/components/ui/data-table";
 import { FiltersBar } from "@/components/ui/filters-bar";
@@ -30,7 +30,7 @@ export default function CustomersPage() {
             header: "Customer",
             render: (customer) => (
               <div>
-                <Link href={`/customers/${customer.id}`} className="font-semibold text-ink hover:text-ember">
+                <Link to={`/customers/${customer.id}`} className="font-semibold text-ink hover:text-ember">
                   {customer.name}
                 </Link>
                 <p className="mt-1 text-xs text-stone-500">{customer.email}</p>

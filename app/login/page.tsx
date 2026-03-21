@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 export default function LoginPage() {
   return (
@@ -26,7 +26,7 @@ export default function LoginPage() {
               <option>Kitchen Viewer</option>
             </select>
             <Link
-              href="/"
+              to="/"
               className="inline-flex w-full items-center justify-center rounded-2xl bg-sand px-4 py-3 font-medium text-ink"
             >
               Enter Dashboard

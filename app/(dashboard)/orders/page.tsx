@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 import { DataTable } from "@/components/ui/data-table";
 import { FiltersBar } from "@/components/ui/filters-bar";
@@ -33,7 +33,7 @@ export default function OrdersPage() {
         description="Searchable and filterable order list prepared for API-backed actions and print flows."
         rows={rows}
         columns={[
-          { header: "Order", render: (order) => <Link href={`/orders/${order.id}`} className="font-semibold text-ink hover:text-ember">{order.id}</Link> },
+          { header: "Order", render: (order) => <Link to={`/orders/${order.id}`} className="font-semibold text-ink hover:text-ember">{order.id}</Link> },
           {
             header: "Customer",
             render: (order) => (

@@ -7,6 +7,7 @@ out/
 
 # production
 build/
+dist/
 
 env
 .env*
@@ -22,3 +23,6 @@ pnpm-debug.log*
 
 # type-script
 *.tsbuildinfo
+temp_auto_push.bat
+temp_interactive_push.bat
+branch_structure.json

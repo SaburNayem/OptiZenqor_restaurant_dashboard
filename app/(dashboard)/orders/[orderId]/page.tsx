@@ -1,19 +1,22 @@
-import { notFound } from "next/navigation";
+import { useParams } from "react-router-dom";
 
+import { ErrorState } from "@/components/ui/error-state";
 import { Panel } from "@/components/ui/panel";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { currency, shortDate } from "@/lib/utils";
 import { getOrderById } from "@/services/dashboard-service";
 
-export default async function OrderDetailsPage({
-  params
-}: {
-  params: Promise<{ orderId: string }>;
-}) {
-  const { orderId } = await params;
+export default function OrderDetailsPage() {
+  const { orderId } = useParams<{ orderId: string }>();
+  if (!orderId) {
+    return <ErrorState title="Missing order id" description="No order was selected for this route." />;
+  }
+
   const order = getOrderById(orderId);
-  if (!order) notFound();
+  if (!order) {
+    return <ErrorState title="Order not found" description="The requested order does not exist in the mock dataset." />;
+  }
 
   return (
     <div className="space-y-6">
